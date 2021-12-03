@@ -1,8 +1,35 @@
-$primary: #68a2d9;
-$secondary: #22456a;
-$grey: #5b5b5f;
-$yellow: #ffcc00;
 $retainer: 600px;
+
+$colors: (
+  "primary": #68a2d9,
+  "secondary": #22456a,
+  "grey": #5b5b5f,
+  "light-grey": #eeeeee,
+  "yellow": #ffcc00,
+  "white": #ffffff,
+);
+
+:root {
+  @each $key, $value in $colors {
+    --#{$key}: #{$value};
+  }
+}
+
+@function color($name) {
+  @if not map-get($colors, $name + "") {
+    @error "Color `#{$name}` not found in map $colors";
+  }
+  @return var(--#{unquote($name)});
+}
+
+@each $key, $value in $colors {
+  .#{$key} {
+    background-color: #{$value};
+    &--text {
+      color: #{$value};
+    }
+  }
+}
 
 html {
   scroll-behavior: smooth;
@@ -10,55 +37,13 @@ html {
 
 body {
   padding: 30px 0;
-  color: $grey;
+  color: color("grey");
   overflow-x: hidden;
 }
 
 p {
   padding: 0;
   margin: 0;
-}
-
-.primary {
-  background-color: $primary;
-  &--text {
-    color: $primary;
-  }
-}
-
-.secondary {
-  background-color: $secondary;
-  &--text {
-    color: $secondary;
-  }
-}
-
-.grey {
-  background-color: $grey;
-  &--text {
-    color: $grey;
-  }
-}
-
-.grey-tint {
-  background-color: #eee;
-  &--text {
-    color: #eee;
-  }
-}
-
-.yellow {
-  background-color: $yellow;
-  &--text {
-    color: $yellow;
-  }
-}
-
-.white {
-  background-color: white;
-  &--text {
-    color: white;
-  }
 }
 
 .full-width {
@@ -87,101 +72,11 @@ p {
   background-color: grey;
 }
 
-.section {
-  &__title {
-    text-transform: uppercase;
-    font-size: 1.75rem;
-    line-height: 32px;
-  }
-  &__subtitle-1 {
-    font-size: 1.5rem;
-    line-height: 28px;
-    &.upper {
-      text-transform: uppercase;
-    }
-  }
-  &__subtitle-2 {
-    font-size: 20px;
-    line-height: 24px;
-  }
-  &__long-text {
-    line-height: 22px;
-  }
-  & + .section,
-  & + .full-width {
-    margin-top: 3rem;
-  }
-  & > * {
-    margin-top: 1.5rem;
-  }
-}
-
-.security-list {
-  margin-top: 30px;
-  &__item {
-    &__title {
-      --size: 20px;
-      @extend .secondary--text;
-      font-size: 20px;
-      line-height: 24px;
-      padding-left: 28px;
-      position: relative;
-      display: flex;
-      align-items: center;
-      &::before {
-        content: "";
-        display: block;
-        width: var(--size);
-        height: var(--size);
-        background-color: $grey;
-        position: absolute;
-        top: 50%;
-        left: 0;
-        transform: translateY(-50%);
-      }
-      & + .security-list__item__paragraph {
-        margin-top: 12px;
-      }
-    }
-    &__paragraph {
-      line-height: 22px;
-    }
-    & + .security-list__item {
-      margin-top: 20px;
-    }
-  }
-}
-
-.bullet-list {
-  padding: 0;
-  padding-left: 28px;
-  margin: 0;
-  margin-top: 20px;
-  list-style-image: url("../images/chevron-circle-right-solid.svg");
-  &__item {
-    line-height: 22px;
-  }
-}
 .divider {
   height: 1px;
   margin: 30px 0;
 }
 
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: $retainer;
-  }
-  .section {
-    margin-left: -15px;
-    margin-right: -15px;
-  }
-}
-
-@media screen and (max-width: 575px) {
-  .full-width {
-    .section {
-      margin-left: 15px;
-      margin-right: 15px;
-    }
-  }
-}
+@import "responsive";
+@import "lists";
+@import "sections";

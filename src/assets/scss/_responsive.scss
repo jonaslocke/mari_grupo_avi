@@ -1,0 +1,18 @@
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: $retainer;
+  }
+  .section {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .full-width {
+    .section {
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+  }
+}

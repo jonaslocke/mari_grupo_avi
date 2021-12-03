@@ -1,0 +1,28 @@
+.section {
+  &__title {
+    text-transform: uppercase;
+    font-size: 1.75rem;
+    line-height: 32px;
+  }
+  &__subtitle-1 {
+    font-size: 1.5rem;
+    line-height: 28px;
+    &.upper {
+      text-transform: uppercase;
+    }
+  }
+  &__subtitle-2 {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  &__long-text {
+    line-height: 22px;
+  }
+  & + .section,
+  & + .full-width {
+    margin-top: 3rem;
+  }
+  & > * {
+    margin-top: 1.5rem;
+  }
+}

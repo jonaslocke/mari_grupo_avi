@@ -1,0 +1,46 @@
+.security-list {
+  margin-top: 30px;
+  &__item {
+    &__title {
+      --size: 20px;
+      @extend .secondary--text;
+      font-size: 20px;
+      line-height: 24px;
+      padding-left: 28px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      &::before {
+        content: "";
+        display: block;
+        width: var(--size);
+        height: var(--size);
+        background-color: color("grey");
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+      }
+      & + .security-list__item__paragraph {
+        margin-top: 12px;
+      }
+    }
+    &__paragraph {
+      line-height: 22px;
+    }
+    & + .security-list__item {
+      margin-top: 20px;
+    }
+  }
+}
+
+.bullet-list {
+  padding: 0;
+  padding-left: 28px;
+  margin: 0;
+  margin-top: 20px;
+  list-style-image: url("../images/chevron-circle-right-solid.svg");
+  &__item {
+    line-height: 22px;
+  }
+}
