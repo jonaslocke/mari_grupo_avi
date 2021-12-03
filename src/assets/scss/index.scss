@@ -1,6 +1,23 @@
 $primary: #68a2d9;
 $secondary: #22456a;
 $grey: #5b5b5f;
+$yellow: #ffcc00;
+$retainer: 600px;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  padding: 30px 0;
+  color: $grey;
+  overflow-x: hidden;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
 
 .primary {
   background-color: $primary;
@@ -22,6 +39,7 @@ $grey: #5b5b5f;
     color: $grey;
   }
 }
+
 .grey-tint {
   background-color: #eee;
   &--text {
@@ -29,13 +47,30 @@ $grey: #5b5b5f;
   }
 }
 
-p {
-  padding: 0;
-  margin: 0;
+.yellow {
+  background-color: $yellow;
+  &--text {
+    color: $yellow;
+  }
 }
-body {
-  padding: 30px 0;
-  color: $grey;
+
+.white {
+  background-color: white;
+  &--text {
+    color: white;
+  }
+}
+
+.full-width {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  display: flex;
+  justify-content: center;
+  .section {
+    width: 100%;
+    max-width: $retainer;
+    margin-bottom: 1.5rem;
+  }
 }
 
 .logo {
@@ -46,26 +81,28 @@ body {
 }
 
 .foto-mock {
-  width: 600px;
+  //   width: $retainer;
+  width: 100%;
   height: 356px;
   background-color: grey;
 }
 
-.container {
-  //   background-color: rgb(255, 0, 0, 0.05);
-}
-
 .section {
-  margin-left: -15px;
-  margin-right: -15px;
   &__title {
     text-transform: uppercase;
     font-size: 1.75rem;
     line-height: 32px;
   }
-  &__subtitle {
+  &__subtitle-1 {
     font-size: 1.5rem;
     line-height: 28px;
+    &.upper {
+      text-transform: uppercase;
+    }
+  }
+  &__subtitle-2 {
+    font-size: 20px;
+    line-height: 24px;
   }
   &__long-text {
     line-height: 22px;
@@ -79,19 +116,72 @@ body {
   }
 }
 
-.full-width {
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-  display: flex;
-  justify-content: center;
-  .section {
-    max-width: 600px;
-    margin-bottom: 1.5rem;
+.security-list {
+  margin-top: 30px;
+  &__item {
+    &__title {
+      --size: 20px;
+      @extend .secondary--text;
+      font-size: 20px;
+      line-height: 24px;
+      padding-left: 28px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      &::before {
+        content: "";
+        display: block;
+        width: var(--size);
+        height: var(--size);
+        background-color: $grey;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+      }
+      & + .security-list__item__paragraph {
+        margin-top: 12px;
+      }
+    }
+    &__paragraph {
+      line-height: 22px;
+    }
+    & + .security-list__item {
+      margin-top: 20px;
+    }
   }
+}
+
+.bullet-list {
+  padding: 0;
+  padding-left: 28px;
+  margin: 0;
+  margin-top: 20px;
+  list-style-image: url("../images/chevron-circle-right-solid.svg");
+  &__item {
+    line-height: 22px;
+  }
+}
+.divider {
+  height: 1px;
+  margin: 30px 0;
 }
 
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 600px;
+    max-width: $retainer;
+  }
+  .section {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .full-width {
+    .section {
+      margin-left: 15px;
+      margin-right: 15px;
+    }
   }
 }
