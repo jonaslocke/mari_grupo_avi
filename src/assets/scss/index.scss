@@ -59,6 +59,12 @@ p {
   }
 }
 
+.hover {
+  &:hover {
+    color: color("primary");
+  }
+}
+
 .logo {
   width: 188px;
   height: 80px;
