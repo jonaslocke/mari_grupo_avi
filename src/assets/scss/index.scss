@@ -39,6 +39,7 @@ body {
   padding-top: 30px;
   color: color("grey");
   overflow-x: hidden;
+  font-family: "gilroy-regular", sans-serif;
 }
 
 p {
@@ -61,7 +62,6 @@ p {
 .logo {
   width: 188px;
   height: 80px;
-  background-color: grey;
   margin: auto;
 }
 
@@ -70,6 +70,12 @@ p {
   width: 100%;
   height: 356px;
   background-color: grey;
+}
+.foto {
+  img {
+    width: 100%;
+    height: 356px;
+  }
 }
 
 .divider {
@@ -80,3 +86,4 @@ p {
 @import "responsive";
 @import "lists";
 @import "sections";
+@import "fonts";
