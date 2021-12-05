@@ -1,0 +1,13 @@
+.mapa {
+  --size: 56px;
+  position: relative;
+  margin-top: calc(var(--size) / 2 * -1) !important;
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: var(--size);
+    background-color: white;
+  }
+}
